@@ -1,4 +1,5 @@
 import { Button } from "../../atoms/buttons"
+import { Link } from "../../atoms/links"
 
 function Buttons({ handleSubmit }) {
   return (
@@ -17,12 +18,14 @@ function Buttons({ handleSubmit }) {
         variant="secondary"
         text={'Reservar'}
         onClick={handleSubmit}
-        
+        className="font-semibold "
       />
 
-      <Button
-        variant="secondary"
+      <Link
+        href='#schedules'
+        variant="primary"
         text={'Ver Horarios'}
+        className="text-white text-base "
       />
     </div>
   )

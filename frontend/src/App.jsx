@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom"
 import { MyTemplate } from "./components/templates/myTemplate"
 import { HomePage } from "./components/pages/homePage"
 import { LetterPage } from "./components/pages/letterPage"
+import { LetterPageCookie } from "./components/pages/letterPageCookie"
+import { LetterPageCake } from "./components/pages/letterPageCake"
 import { AbouUsPage } from "./components/pages/aboutUsPage"
 import { BookingPage } from "./components/pages/bookingPage"
 import { ContactPage } from "./components/pages/contactPage"
@@ -36,6 +38,14 @@ function App() {
     {
       path: '/letter',
       element: <LetterPage/>
+    },
+    {
+      path: '/LetterPageCookie',
+      element: <LetterPageCookie/>
+    },
+    {
+      path: '/LetterPageCake',
+      element: <LetterPageCake/>
     },
     {
       path: '/aboutus',

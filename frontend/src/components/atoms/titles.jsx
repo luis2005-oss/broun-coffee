@@ -24,7 +24,7 @@ function Title({
   };
 
   const defaultByLevel = {
-  h1: 'text-xl sm:text-2xl md:text-3xl',
+  h1: 'text-3xl md:text-4xl',
   h2: 'text-[1.3em] sm:text-[1.7em] md:text-[1.9em]',
   h3: 'text-base sm:text-[1.2em] md:text-xl',
   h4: 'text-sm sm:text-base md:text-lg',
