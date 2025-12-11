@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-  "dev": "concurrently -n BACKEND,FRONTEND -c blue,magenta \"npm run dev --prefix BACKEND\" \"npm run dev --prefix FRONTEND\""
+    "dev": "concurrently -n BACKEND,FRONTEND -c blue,magenta \"npm run dev --prefix BACKEND\" \"npm run dev --prefix FRONTEND\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "joi": "18.0.2"
   },
   "devDependencies": {

@@ -38,21 +38,21 @@ server.use('/categories', categoryRoutes)
 
 // C. Ruta de prueba (Health Check)
 server.get('/api-status', (req, res) => {
-  res.json({ message: 'API Broun Coffee funcionando' })
+  res.json({ message: 'API Broun Coffee funcionando ☕' })
 })
 
 // --- LEVANTAR SERVIDOR ---
 server.listen(port, async () => {
-  console.log(`Servidor corriendo en: http://localhost:${port}`)
+  console.log(`🚀 Servidor corriendo en: http://localhost:${port}`)
   
   try {
     // Verificamos conexión a la Base de Datos
     await sequelize.authenticate()
-    console.log('Base de datos conectada correctamente')
+    console.log('✅ Base de datos conectada correctamente')
     
     // Opcional: Sincronizar tablas si es necesario (cuidado con force:true)
     // await sequelize.sync({ force: false }) 
   } catch (error) {
-    console.error('Error de conexión BD:', error)
+    console.error('❌ Error de conexión BD:', error)
   }
 })

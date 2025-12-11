@@ -17,15 +17,17 @@ function Buttons({ handleSubmit }) {
       <Button
         variant="secondary"
         text={'Reservar'}
+        type='submit'
         onClick={handleSubmit}
         className="font-semibold "
+
       />
 
       <Link
         href='#schedules'
-        variant="primary"
+        variant="button"
         text={'Ver Horarios'}
-        className="text-white text-base "
+        className="font-semibold "
       />
     </div>
   )
