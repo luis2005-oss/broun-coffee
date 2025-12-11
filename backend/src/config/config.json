@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "17052025",
+    "password": "yerson",
     "database": "api_brown_fee",
     "host": "127.0.0.1",
     "dialect": "mysql"
