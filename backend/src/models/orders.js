@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Orders.init({
-    idCategory: {
+    idOrder: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     total: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     state: {
