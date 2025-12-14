@@ -4,10 +4,14 @@ const { Op } = Sequelize;
 class CategoryRepository {
   
   async findAll(search) {
-    let whereCondition = {};
+    // 1. Filtro base: Solo Categorías Activas
+    let whereCondition = { state: 'Activo' };
+
+    // 2. Si hay búsqueda, agregamos el nombre
     if (search) {
-      whereCondition = { name: { [Op.like]: `%${search}%` } };
+      whereCondition.name = { [Op.like]: `%${search}%` };
     }
+
     return await Category.findAll({ where: whereCondition });
   }
 

@@ -4,10 +4,15 @@ const { Op } = Sequelize;
 class ProductRepository {
   
   async findAll(search) {
-    let whereCondition = {};
+    // 1. Definimos el filtro base: SOLO productos activos
+    let whereCondition = { state: 'Activo' };
+
+    // 2. Si hay búsqueda, agregamos el filtro de nombre al objeto existente
     if (search) {
-      whereCondition = { name: { [Op.like]: `%${search}%` } };
+      whereCondition.name = { [Op.like]: `%${search}%` };
     }
+
+    // Sequelize combinará ambas condiciones (Estado "Activo" Y Nombre coincidente)
     return await Products.findAll({ where: whereCondition });
   }
 
@@ -24,15 +29,9 @@ class ProductRepository {
   }
 
   async softDelete(product) {
+    // Al "eliminar", solo cambiamos el estado
     return await product.update({ state: 'Inactivo' });
   }
-  
-  // Métodos comentados para uso futuro
-  /*
-  async findByCategory(categoryId) {
-    return await Products.findAll({ where: { categoryId } });
-  }
-  */
 }
 
 module.exports = new ProductRepository();
