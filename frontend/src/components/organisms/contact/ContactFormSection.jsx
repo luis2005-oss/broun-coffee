@@ -6,13 +6,13 @@ function ContactFormSection() {
   return (
     <section className="relative w-full py-20 px-4 -mt-20 z-20">
       
-      <div className="max-w-6xl mx-auto bg-[#121212]/95 backdrop-blur-2xl shadow-[0_0_50px_rgba(255,187,0,0.2)] rounded-[2.5rem] overflow-hidden border border-[#FFBB00]/50 grid grid-cols-1 lg:grid-cols-2">
+      <div className="max-w-6xl mx-auto bg-[#121212]/95 backdrop-blur-2xl shadow-[0_0_50px_rgba(255,187,0,0.2)] rounded-xl overflow-hidden border border-[#FFBB00]/50 grid grid-cols-1 lg:grid-cols-2">
         
         <div className="relative p-10 md:p-14 flex flex-col justify-between overflow-hidden">
           
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-50 transition-transform duration-700 hover:scale-105"></div>
           
-          <div className="absolute inset-0 bg-gradient-to-b from-[#06141F]/80 via-[#06141F]/60 to-[#000000]/90"></div>
+          <div className="absolute inset-0 bg-linera-to-b from-[#06141F]/80 via-[#06141F]/60 to-[#000000]/90"></div>
           
           <div className="relative z-10">
             <Title 
@@ -62,7 +62,7 @@ function ContactFormSection() {
 
             <Button 
               text="Enviar Mensaje" 
-              className="w-full mt-2 bg-gradient-to-r from-[#FFBB00] to-[#A66A06] text-black font-bold hover:scale-[1.02] shadow-lg hover:shadow-[#FFBB00]/20 py-4 rounded-xl transition-all cursor-pointer"
+              className="w-full mt-2 bg-linear-to-r from-[#FFBB00] to-[#A66A06] text-black font-bold hover:scale-[1.02] shadow-lg hover:shadow-[#FFBB00]/20 py-4 rounded-xl transition-all cursor-pointer"
             />
           </form>
         </div>

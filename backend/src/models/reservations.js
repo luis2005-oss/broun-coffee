@@ -32,7 +32,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    reservationdate: {
+    numberPeople: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    reservationDate: {
       type: DataTypes.DATE,
       allowNull: false
     },
@@ -40,18 +44,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TIME,
       allowNull: false
     },
-    numberPeople: {
-      type: DataTypes.INTEGER,
+    reason: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    specialRequeriment: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    message: {
+      type: DataTypes.INTEGER(200),
       allowNull: false
     },
     state: {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    confirmationCode: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    }
   }, {
     sequelize,
     modelName: 'reservations'

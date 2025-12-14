@@ -12,7 +12,7 @@ function ContactHero() {
           alt="Fondo Contacto" 
           className="w-full h-full object-cover object-center brightness-50"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/60"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/40 to-black/60"></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center px-4 max-w-4xl text-center gap-4 mt-4 pb-20 md:pb-32">
@@ -40,10 +40,9 @@ function ContactHero() {
 
       </div>
 
-      <div className="absolute bottom-0 w-full z-20 leading-[0]">
+      <div className="absolute bottom-0 w-full z-20 leading-0">
         <BannerBgCurve 
-            design={1} 
-            color="#f3f4f6" 
+            design={4} 
             height="h-16 md:h-24" 
         />
       </div>

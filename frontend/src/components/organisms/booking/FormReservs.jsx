@@ -5,101 +5,83 @@ import { Buttons } from "../../molecules/booking/buttonsForm";
 import { Description } from "./descriptionForm";
 
 function Form() {
+  const [clientName, setClinentName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [numberPeople, setNumberPeople] = useState('')
+  const [reservationDate, setReservationDate] = useState('')
+  const [reservationTime, setReservationTime] = useState('')
+  const [reason, setReason] = useState('')
+  const [specialRequeriment, setSpecialRequeriment] = useState('')
+  const [message, setMessage] = useState('')
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = () => {
-    console.log('Datos del formulario:', data);
-    alert('Reserva enviada con éxito!');
-  };
-
-  const [data, setData] = useState({
-    name: '',
-    email: '',
-    cellPhone: '',
-    peoples: '',
-    date: '',
-    time: '',
-    reason: '',
-    specialRequirement: '',
-    message: ''
-  })
-
+  
   const title = 'Reserva tu mesa y disfruta de una experiencia cómoda, sin espera. Nuestro equipo estará listo para recibirte.'
   
   const formFields = [
     {
       text: 'Nombre',
-      htmlFor: 'name',
-      name: 'name',
-      value: data.name,
+      htmlFor: 'clientName',
+      name: 'clientName',
+      value: clientName,
       type: 'text',
-      onChange: handleChange
+      onChange: (e) => setClinentName(e.target.value)
     },
     {
       text: 'Correo',
       htmlFor: 'email',
       name: 'email',
-      value: data.email,
+      value: email,
       type: 'email',
-      onChange: handleChange
+      onChange: (e) => setEmail(e.target.value)
     },
 
-    // CELULAR Y PERSONAS EN LA MISMA FILA
     [
       {
         text: 'Celular',
-        htmlFor: 'cellPhone',
-        name: 'cellPhone',
-        value: data.cellPhone,
+        htmlFor: 'phone',
+        name: 'phone',
+        value: phone,
         type: 'tel',
-        onChange: handleChange
+        onChange: (e) => setPhone(e.target.value)
       },
       {
         text: 'Nª Personas',
         htmlFor: 'peoples',
         name: 'peoples',
-        value: data.peoples,
+        value: numberPeople,
         type: 'number',
-        onChange: handleChange
+        onChange: (e) => setNumberPeople(e.target.value)
       }
     ],
 
-    // FECHA Y HORA EN LA MISMA FILA
     [
       {
         text: 'Fecha de la Reserva',
         htmlFor: 'date',
         name: 'date',
-        value: data.date,
+        value: reservationDate,
         type: 'date',
-        onChange: handleChange
+        onChange: (e) => setReservationDate (e.target.value)
       },
       {
         text: 'Hora de la reserva',
         htmlFor: 'time',
         name: 'time',
-        value: data.time,
+        value: reservationTime,
         type: 'time',
-        onChange: handleChange
+        onChange: (e) => setReservationTime(e.target.value)
       }
     ],
 
-    // MOTIVO Y REQUERIMIENTO ESPECIAL EN LA MISMA FILA
     [
       {
         text: 'Motivo',
         htmlFor: 'reason',
         name: 'reason',
-        value: data.reason,
+        value: reason,
         type: 'select',
-        onChange: handleChange,
+        onChange: (e) => setReason(e.target.value),
         options: [
           { text: 'Seleccionar...', value: '' },
           { text: 'Cumpleaños', value: 'cumpleanos' },
@@ -112,9 +94,9 @@ function Form() {
         text: 'Requerimiento Especial',
         htmlFor: 'specialRequirement',
         name: 'specialRequirement',
-        value: data.specialRequirement,
+        value: specialRequeriment,
         type: 'select',
-        onChange: handleChange,
+        onChange: (e) => setSpecialRequeriment(e.target.value),
         options: [
           { text: 'Ninguno', value: '' },
           { text: 'Silla de bebé', value: 'silla-bebe' },
@@ -128,12 +110,17 @@ function Form() {
       text: 'Mensaje',
       htmlFor: 'message',
       name: 'message',
-      value: data.message,
+      value:message,
       type: 'text',
-      onChange: handleChange
+      onChange: (e) => setMessage(e.target.value)
     }
   ];
 
+  
+  const handleSubmit = () => {
+    console.log('Datos del formulario:', data);
+    alert('Reserva enviada con éxito!');
+  };
   return (
     <div className="flex flex-col gap-10 items-center mt-10 mb-10 z-[-1]">
 

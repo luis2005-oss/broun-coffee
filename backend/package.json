@@ -25,6 +25,6 @@
     "standard": "17.1.2"
   },
   "slintConfig":{
-    "extends": ["./node_modules/standard/slintrc.json"]
+    "extends": ["standard"]
   }
 }

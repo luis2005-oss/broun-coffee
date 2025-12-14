@@ -25,7 +25,10 @@ function Button({
       rounded-lg shadow-lg hover:shadow-xl shadow-black/30
       transition-tranform duration-300 hover:-translate-y-[4px]
       min-w-[120px]  sm:min-w-[160px] md:min-w-[180px]
-`}
+`,
+    third : `bg-[#fdf2dd] border border-[#b8925c] 
+      px-4 py-2 rounded-full font-semibold hover:bg-[#FFE5B6]`
+}
 
   return (
     <button 

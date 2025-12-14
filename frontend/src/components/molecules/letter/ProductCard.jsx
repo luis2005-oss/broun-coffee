@@ -1,6 +1,9 @@
 import { RatingDisplay } from "../../atoms/letter/RatingDisplay";
 import { PriceTag } from "../../atoms/letter/PriceTag";
 import { ProductImage } from "../../atoms/letter/ProductImage";
+import { Button } from "../../atoms/buttons";
+import { FiShoppingCart } from "react-icons/fi";
+
 
 function ProductCard({ nombre, precio, rating, imagen, onOrder }) {
   return (
@@ -13,16 +16,20 @@ function ProductCard({ nombre, precio, rating, imagen, onOrder }) {
         <div className="flex flex-col items-start gap-2 text-sm mb-3 text-[#2e2a23]">
           <RatingDisplay rating={rating} />
 
-          <button
+          <Button
+            text={'Pedir'}
+            variant="third"
             onClick={onOrder}
-            className="bg-[#fdf2dd] border border-[#b8925c] px-4 py-2 rounded-full font-semibold hover:bg-[#FFE5B6]"
-          >
-            Pedir
-          </button>
+          />
+          <Button
+            text={FiShoppingCart}
+            variant="third"
+            onClick={onOrder}
+          />
+            
+          
         </div>
-
         <ProductImage src={imagen} alt={nombre} />
-
         <PriceTag precio={precio} />
       </div>
     </article>

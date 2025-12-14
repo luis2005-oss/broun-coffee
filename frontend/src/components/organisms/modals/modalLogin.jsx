@@ -17,37 +17,51 @@ function ModalLogin({ setModalIsOpen, setRegisterIsOpen }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
+    setError('')
 
     try {
+      const payload = { email, password }
+
       const request = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(payload),
         credentials: 'include'
       })
 
-      if (!request.ok) {
-        throw new Error('Usuario y/o contraseña inválidos')
-      }
-
       const response = await request.json()
 
-      switch (response.role) {
-        case 'C':
-          navigate('/cdashboard')
-          break
-        case 'A':
-          navigate('/adashboard')
-          break
-        case 'V':
-          navigate('/vdashboard')
-          break
-        default:
-          navigate('/')
+      if (!request.ok) {
+        throw new Error(response.message || 'Usuario y/o contraseña inválidos')
       }
+
+      // ✅ Cerrar modal ANTES de navegar
+      setIsClosing(true)
+
+      // Esperar a que termine la animación de cierre
+      setTimeout(() => {
+        setModalIsOpen(false)
+
+        // Navegar según el rol
+        switch (response.role) {
+          case 'C':
+            navigate('/')
+            break
+          case 'A':
+            navigate('/adashboard')
+            break
+          case 'V':
+            navigate('/vdashboard')
+            break
+          default:
+            navigate('/')
+        }
+      }, 200) 
+
     } catch (error) {
+      console.error('❌ Error de login:', error)
       setError(error.message)
     } finally {
       setLoading(false)

@@ -9,18 +9,18 @@ const loginController = async (req, res) => {
     const { email, password } = req.body
     await CredentialsValidator.validateAsync({ email, password })
 
-    // validar que el correo exista
     const user = await getUserByEmail(email)
-    console.log(user)
+    console.log('Usuario encontrado:', user)
+    
     if (!user) {
       return res.status(401).json({ message: 'Usuario y/o contraseña incorrectos' })
     }
 
-    if (!user.isActive) {
+    // Verificar si el usuario está activo usando 'state'
+    if (user.state !== 'active') {
       return res.status(403).json({ message: 'Usuario inactivo' })
     }
 
-    // validar que la contraseña exista
     const passwordIsValid = await verifyPassword(password, user.password)
     if (!passwordIsValid) {
       return res.status(401).json({ message: 'Usuario y/o contraseña incorrectos' })
@@ -29,13 +29,19 @@ const loginController = async (req, res) => {
     const jwtPayload = {
       idUser: user.idUser,
       email: user.email,
-      role: role.role
+      role: user.role
     }
     const token = createJWT(jwtPayload)
 
     res.cookie(cookieName, token, cookieOptions)
-    return res.status(200).json({ message: 'inicio de sesión exitoso', userId: user.idUser })
+    
+    return res.status(200).json({ 
+      message: 'inicio de sesión exitoso', 
+      userId: user.idUser,
+      role: user.role
+    })
   } catch (error) {
+    console.error('Error en login:', error)
     return res.status(400).json({ message: error.message })
   }
 }

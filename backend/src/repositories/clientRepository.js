@@ -2,7 +2,7 @@ const { Users } = require('../models')
 /* =========================
   REGISTRO DE CLIENTE
 ========================= */
-const clientRegister = async (firstName, lastName, email, phone, birthdate, gender, address, password, repassword) => {
+const clientRegister = async (firstName, lastName, email, phone, birthdate, gender, address, password) => {
   const newClient = await Users.create({
     firstName,
     lastName,
@@ -11,9 +11,9 @@ const clientRegister = async (firstName, lastName, email, phone, birthdate, gend
     birthdate,
     gender,
     address,
+    state: 'active',
     password,
     role: 'C',
-    isActive: true,
     createdAt: new Date(),
     updatedAt: new Date()
   })
@@ -26,7 +26,7 @@ const clientRegister = async (firstName, lastName, email, phone, birthdate, gend
   const getUserByEmail = async (email) => {
   return await Users.findOne({
     where: { email },
-    attributes: ['idUser', 'email', 'password', 'role', 'isActive']
+    attributes: ['idUser', 'email', 'password', 'role', 'state']
   })
 }
 
@@ -36,7 +36,7 @@ const clientRegister = async (firstName, lastName, email, phone, birthdate, gend
 const userIsActive = async (userId) => {
   const user = await Users.findOne({
     where: { idUser: userId },
-    attributes: ['isActive']
+    attributes: ['state']
   })
 
   return !!user?.isActive
