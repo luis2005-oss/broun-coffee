@@ -1,7 +1,7 @@
 'use strict'
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('ContactMessages', {
       idContactMessages: {
         type: Sequelize.UUID,
@@ -18,10 +18,6 @@ module.exports = {
         allowNull: false
       },
       phone: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
-      affair: {
         type: Sequelize.STRING(20),
         allowNull: false
       },
@@ -29,16 +25,8 @@ module.exports = {
         type: Sequelize.STRING(200),
         allowNull: false
       },
-      type: {
-        type: Sequelize.STRING(30),
-        allowNull: false
-      },
       state: {
         type: Sequelize.STRING(20),
-        allowNull: false
-      },
-      shippingDate: {
-        type: Sequelize.DATE,
         allowNull: false
       },
       createdAt: {
@@ -53,7 +41,7 @@ module.exports = {
       }
     })
   },
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('ContactMessages')
   }
 }

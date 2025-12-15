@@ -1,19 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const contactMessageController = require('../controllers/contactMessage.controller');
+const contactMessageController = require('../controllers/messageController/contactMessage.controller');
 const validateMiddleware = require('../middlewares/validate.middleware');
 const authMiddleware = require('../middlewares/auth.middleware');
+const {messageController} = require('../controllers/messageController/messagePost')
 const {
-  createContactMessageSchema,
   getContactMessageSchema,
 } = require('../utils/schemas/contactMessage.schema');
 
 // Public route to send a message
-router.post(
-  '/',
-  validateMiddleware({ body: createContactMessageSchema }),
-  contactMessageController.create
-);
+router.post('/', messageController)
 
 // Protected routes for admin
 router.get('/', authMiddleware, contactMessageController.getAll);

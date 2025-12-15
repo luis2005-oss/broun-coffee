@@ -7,7 +7,8 @@ function LocationNavbar () {
   const location = 'Jr. José Galves 610 - Celendín'
     return(
         <Link 
-          href='#'
+          target='_black'
+          href='https://maps.app.goo.gl/vVZ61ztE83h5e7V2A'
           variant="danger"
         >
           <FaLocationDot className="text-red-500 "/>

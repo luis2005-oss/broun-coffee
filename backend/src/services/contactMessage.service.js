@@ -13,10 +13,6 @@ class ContactMessageService {
     return message;
   }
 
-  async create(messageData) {
-    return await contactMessageRepository.create(messageData);
-  }
-
   async delete(id) {
     await this.findOne(id); // Ensure it exists
     return await contactMessageRepository.destroy(id);

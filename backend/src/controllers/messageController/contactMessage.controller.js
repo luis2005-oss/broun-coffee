@@ -1,4 +1,4 @@
-const contactMessageService = require('../services/contactMessage.service');
+const contactMessageService = require('../../services/contactMessage.service');
 
 const getAll = async (req, res) => {
   try {
@@ -6,15 +6,6 @@ const getAll = async (req, res) => {
     res.status(200).json(messages);
   } catch (error) {
     res.status(500).json({ message: error.message });
-  }
-};
-
-const create = async (req, res) => {
-  try {
-    const newMessage = await contactMessageService.create(req.body);
-    res.status(201).json(newMessage);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
   }
 };
 
@@ -30,6 +21,5 @@ const deleteOne = async (req, res) => {
 
 module.exports = {
   getAll,
-  create,
   deleteOne,
 };

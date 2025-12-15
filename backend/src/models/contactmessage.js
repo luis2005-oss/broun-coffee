@@ -29,10 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     phone: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    affair: {
       type: DataTypes.STRING(20),
       allowNull: false
     },
@@ -40,18 +36,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(200),
       allowNull: false
     },
-    type: {
-      type: DataTypes.STRING(30),
-      allowNull: false
-    },
     state: {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    shippingDate: {
-      type: DataTypes.STRING(20),
-      allowNull: false
-    }
   }, {
     sequelize,
     modelName: 'ContactMessage'
