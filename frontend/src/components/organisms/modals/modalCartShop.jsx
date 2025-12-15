@@ -132,7 +132,7 @@ function CartShop({ setCartShopOpen }) {
             </div>
             <Button
               text="Realizar Pedido"
-              className="w-full"
+              className="w-full cursor-pointer"
               onClick={handleOrder}
             />
           </div>
