@@ -78,11 +78,7 @@ function HomeBanner() {
             className="max-w-2xl lg:max-w-3xl mb-6 md:mb-8 lg:mb-10 leading-relaxed"
           />
         </div>
-        
-        <div className="w-full max-w-full overflow-hidden">
           <BannerBgCurve design={1}/>
-        </div>
-        
         <div
           className="w-full max-w-full"
           data-aos="zoom-in"
@@ -92,11 +88,7 @@ function HomeBanner() {
           <BannerButtons/>
         </div>
       </article>
-      
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <BannerCoffee/>
-      </div>
-
     </section>
   )
 }
