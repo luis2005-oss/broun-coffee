@@ -1,9 +1,9 @@
-import { Route, Routes } from "react-router-dom"
-import { MyTemplate } from "./components/templates/myTemplate"
+import { Route, Routes, Navigate } from "react-router-dom"
 import { HomePage } from "./components/pages/homePage"
 import { LetterPage } from "./components/pages/letterPage"
-import { LetterPageCookie } from "./components/pages/letterPageCookie"
-import { LetterPageCake } from "./components/pages/letterPageCake"
+// Eliminamos imports viejos innecesarios
+// import { LetterPageCookie } from "./components/pages/letterPageCookie"
+// import { LetterPageCake } from "./components/pages/letterPageCake"
 import { AbouUsPage } from "./components/pages/aboutUsPage"
 import { BookingPage } from "./components/pages/bookingPage"
 import { ContactPage } from "./components/pages/contactPage"
@@ -20,11 +20,10 @@ import { TendenciesCakes } from "./components/organisms/home/tendenciesCakes"
 import { Footer } from "./components/organisms/footer"
 import { WhatsAppButton } from "./components/atoms/WhatsAppButton"
 
-
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [cartShopOpen, setCartShopOpen] = useState(false)
-  const [registerIsOpen, setRegisterIsOpen] = useState (false)
+  const [registerIsOpen, setRegisterIsOpen] = useState(false)
 
   const pages = [
     {
@@ -39,15 +38,16 @@ function App() {
     },
     {
       path: '/letter',
-      element: <LetterPage/>
+      element: <LetterPage/> // Única página para toda la carta
     },
+    // Redirecciones para compatibilidad
     {
       path: '/LetterPageCookie',
-      element: <LetterPageCookie/>
+      element: <Navigate to="/letter" replace />
     },
     {
       path: '/LetterPageCake',
-      element: <LetterPageCake/>
+      element: <Navigate to="/letter" replace />
     },
     {
       path: '/aboutus',
@@ -67,34 +67,33 @@ function App() {
     <>
       <Navbar 
         setModalIsOpen={setModalIsOpen}
-        setRegisterIsOpen= {setRegisterIsOpen}
+        setRegisterIsOpen={setRegisterIsOpen}
         setCartShopOpen={setCartShopOpen} />
-      <MyTemplate>
-        {modalIsOpen ? <ModalLogin 
-          setModalIsOpen={setModalIsOpen} 
-          setRegisterIsOpen={setRegisterIsOpen}
-          /> : ''}
-        {cartShopOpen ? <CartShop setCartShopOpen={setCartShopOpen} /> : ''}
-        {registerIsOpen ? <ModalRegister setRegisterIsOpen={setRegisterIsOpen} /> : ''}
-        <Routes>
-          {pages.map((page, i) => (
-            <Route
-              key={i}
-              path={page.path}
-              element={page.element}
-            >
-              {page.children?.map((child, j) => (
-                <Route
-                  key={j}
-                  path={child.path}
-                  index={child.index} 
-                  element={child.element}
-                />
-              ))}
-            </Route>
-          ))}
-        </Routes>
-      </MyTemplate>
+      
+      {/* Modales (Sin cambios, respetando código de compañeros) */}
+      {modalIsOpen && <ModalLogin setModalIsOpen={setModalIsOpen} setRegisterIsOpen={setRegisterIsOpen} />}
+      {cartShopOpen && <CartShop setCartShopOpen={setCartShopOpen} />}
+      {registerIsOpen && <ModalRegister setRegisterIsOpen={setRegisterIsOpen} />}
+
+      <Routes>
+        {pages.map((page, i) => (
+          <Route
+            key={i}
+            path={page.path}
+            element={page.element}
+          >
+            {page.children?.map((child, j) => (
+              <Route
+                key={j}
+                path={child.path}
+                index={child.index} 
+                element={child.element}
+              />
+            ))}
+          </Route>
+        ))}
+      </Routes>
+      
       <Footer/>
       <WhatsAppButton />
     </>

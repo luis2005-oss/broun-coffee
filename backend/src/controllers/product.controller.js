@@ -5,11 +5,8 @@ const getProducts = async (req, res) => {
     const { search } = req.query;
     const products = await productService.getAllProducts(search);
     
-    return res.status(200).json({
-      message: search ? `Resultados para: ${search}` : 'Lista de productos',
-      count: products.length,
-      data: products
-    });
+    // CAMBIO: Devolvemos el array 'products' directo, sin envolverlo en 'data'
+    return res.status(200).json(products); 
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Error interno', error: error.message });

@@ -1,7 +1,11 @@
-function PriceTag({ precio }) {
+function PriceTag({ price, precio }) {
+  const displayPrice = price || precio;
+
+  if (!displayPrice) return null;
+
   return (
-    <div className="absolute top-0 left-0 p-4 z-10 ml-38 bg-white/40 rounded-3xl">
-      <span className="font-semibold ml-2">{precio}</span>
+    <div className="bg-[#432a0c] text-[#FFFAD3] px-3 py-1 rounded-full text-sm font-bold shadow-md border border-[#d6c394] whitespace-nowrap z-50">
+      {displayPrice}
     </div>
   );
 }

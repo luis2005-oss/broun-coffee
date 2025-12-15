@@ -39,9 +39,9 @@ function AboutUsGallerySection() {
             alt="Grano de Café"
           />
 
-          <AboutUsHistoryBlock />
 
         </div>
+          <AboutUsHistoryBlock />
       </div>
     </section>
   )

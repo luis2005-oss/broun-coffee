@@ -1,7 +1,9 @@
 const Joi = require('joi');
 
 const idSchema = Joi.object({
-  id: Joi.number().integer().positive().required()
+  id: Joi.string().guid({ version: 'uuidv4' }).required().messages({
+    'string.guid': 'El ID debe ser un UUID válido'
+  })
 });
 
 const createProductSchema = Joi.object({
@@ -11,7 +13,8 @@ const createProductSchema = Joi.object({
   img: Joi.string().required(),
   stock: Joi.number().integer().min(0).default(0),
   state: Joi.string().valid('Activo', 'Inactivo').required(),
-  // categoryId: Joi.string().guid({ version: 'uuidv4' }).optional()
+  // Aprovechamos de asegurar que categoryId sea obligatorio (según tu DB)
+  categoryId: Joi.string().guid({ version: 'uuidv4' }).required()
 });
 
 const updateProductSchema = Joi.object({
@@ -20,7 +23,8 @@ const updateProductSchema = Joi.object({
   price: Joi.number().precision(2).positive(),
   img: Joi.string(),
   stock: Joi.number().integer().min(0),
-  state: Joi.string().valid('Activo', 'Inactivo')
+  state: Joi.string().valid('Activo', 'Inactivo'),
+  categoryId: Joi.string().guid({ version: 'uuidv4' })
 }).min(1);
 
 const searchSchema = Joi.object({

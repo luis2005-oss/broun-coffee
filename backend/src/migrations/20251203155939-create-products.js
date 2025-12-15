@@ -10,6 +10,18 @@ module.exports = {
         primaryKey: true,
         allowNull: false
       },
+      // --- NUEVO CAMPO OBLIGATORIO ---
+      categoryId: {
+        type: Sequelize.UUID,
+        allowNull: false, // Un producto debe tener categoría sí o sí
+        references: {
+          model: 'Categories', // Nombre exacto de la tabla de categorías en BD
+          key: 'idCategory'    // Nombre exacto de la llave primaria en Categorías
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      // -------------------------------
       name: {
         type: Sequelize.STRING(50),
         allowNull: false

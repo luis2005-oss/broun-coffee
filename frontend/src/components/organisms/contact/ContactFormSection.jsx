@@ -1,6 +1,7 @@
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa"
 import { Title } from "../../atoms/titles"
 import { Button } from "../../atoms/buttons"
+import { Paragraph } from "../../atoms/paragraph"
 
 function ContactFormSection() {
   return (
@@ -21,9 +22,9 @@ function ContactFormSection() {
               variant="secondary" 
               className="font-joti text-3xl mb-3 drop-shadow-md" 
             />
-            <p className="text-gray-200 font-light mb-12 text-lg drop-shadow-sm">
+            <Paragraph className="text-gray-200 font-light mb-12 text-lg drop-shadow-sm">
               Encuéntranos en el corazón de la ciudad o escríbenos un mensaje.
-            </p>
+            </Paragraph>
             
             <div className="space-y-8">
               <InfoItem icon={<FaMapMarkerAlt />} title="Dirección" text="Jr. José Galves 610 - Celendín" />
@@ -82,7 +83,7 @@ function InfoItem({ icon, title, text }) {
       </div>
       <div>
         <h4 className="font-bold text-white text-lg mb-0.5 drop-shadow-sm">{title}</h4>
-        <p className="text-gray-300 font-normal text-base">{text}</p>
+        <Paragraph className="text-gray-300 font-normal text-base">{text}</Paragraph>
       </div>
     </div>
   )
