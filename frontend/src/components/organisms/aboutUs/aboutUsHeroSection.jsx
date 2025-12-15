@@ -3,6 +3,16 @@ import { AboutUsFloatingImage } from "../../atoms/aboutUs/aboutUsFloatingImage"
 import { AboutUsInfoCard } from "../../molecules/aboutUs/aboutUsInfoCard"
 
 function AboutUsHeroSection() {
+  const mision = `Nuestra misión es ofrecer a nuestros clientes una experiencia única a 
+  través de cafés de alta calidad, postres artesanales y galletas elaboradas con dedicación, 
+  brindando un ambiente acogedor y un servicio cercano. Buscamos combinar tradición y creatividad 
+  para convertir cada visita en un momento especial, apoyándonos en la innovación y en nuestra plataforma
+  digital para acercarnos más a nuestra comunidad.`
+
+  const vision = `Nuestra visión es consolidarnos como una cafetería referente en nuestra ciudad, 
+  reconocida por la excelencia de nuestros productos, la calidez de nuestro servicio y la innovación 
+  constante. Aspiramos a crecer de manera sostenible, fortaleciendo nuestra marca y nuestra presencia digital, 
+  para convertirnos en un punto de encuentro preferido por los amantes del café y la repostería artesanal.`
   return (
     <section className="relative w-full min-h-screen bg-transparent overflow-hidden flex flex-col items-center justify-center pt-28 pb-20 px-4">
       
@@ -18,7 +28,7 @@ function AboutUsHeroSection() {
           
           <AboutUsInfoCard 
             title="Misión"
-            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+            text={mision}
             data-aos="fade-right"
             data-aos-duration="1000"
             data-aos-delay="200"
@@ -34,7 +44,7 @@ function AboutUsHeroSection() {
 
           <AboutUsInfoCard 
             title="Visión"
-            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+            text={vision}
             data-aos="fade-left"
             data-aos-duration="1000"
             data-aos-delay="200"
