@@ -12,7 +12,6 @@ class ProductRepository {
       whereCondition.name = { [Op.like]: `%${search}%` };
     }
 
-    // Sequelize combinará ambas condiciones (Estado "Activo" Y Nombre coincidente)
     return await Products.findAll({ where: whereCondition });
   }
 
@@ -29,7 +28,6 @@ class ProductRepository {
   }
 
   async softDelete(product) {
-    // Al "eliminar", solo cambiamos el estado
     return await product.update({ state: 'Inactivo' });
   }
 }
