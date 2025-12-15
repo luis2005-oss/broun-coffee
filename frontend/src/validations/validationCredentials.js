@@ -2,7 +2,7 @@ import Joi from "joi"
 
 
 const ClientValidator = Joi.object({
-  firstName: Joi
+  ame: Joi
     .string()
     .pattern(/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/)
     .min(2)
