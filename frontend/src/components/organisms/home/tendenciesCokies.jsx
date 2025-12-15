@@ -3,32 +3,29 @@ import { TendenciesCard } from "../../molecules/home/homeTendeciesCard";
 
 function TendenciesCokies() {
   const trackRef = useRef(null);
-  const speed = 0.4; // px por frame
+  const speed = 0.4;
 
-  const tendenciesCokies = [
+  // Datos estáticos usando tus imágenes de la carpeta public
+  const tendenciesCookies = [
     {
-      img: "/TEN-COFFEE1.png",
-      title: "Café Espresso",
-      description:
-        "Intenso y concentrado, es la base perfecta para muchas bebidas clásicas.",
+      img: "/GT-CHIPS.png",
+      title: "Galleta Chispas",
+      description: "Clásica y crujiente, repleta de deliciosas chispas de chocolate.",
     },
     {
-      img: "/TEN-COFFEE2.png",
-      title: "Café Latte",
-      description:
-        "Suave y cremoso, mezcla armoniosa de espresso con abundante leche.",
+      img: "/GT-OREO.png",
+      title: "Galleta Oreo",
+      description: "Sabor inconfundible con trozos de tu galleta favorita.",
     },
     {
-      img: "/TEN-COFFEE3.png",
-      title: "Café Americano",
-      description:
-        "Ligero y equilibrado, ideal para quienes prefieren un sabor menos fuerte.",
+      img: "/GT-CHOCOLATE.png",
+      title: "Full Chocolate",
+      description: "Para los amantes del cacao, una explosión de sabor intenso.",
     },
     {
-      img: "/TEN-COFFEE4.png",
-      title: "Café Mocha",
-      description:
-        "Dulce y chocolatoso, combina espresso con cacao y un toque de leche.",
+      img: "/GT-WAFER.png",
+      title: "Wafer Vainilla",
+      description: "Capas ligeras y crujientes con un suave relleno de crema.",
     },
   ];
 
@@ -39,18 +36,15 @@ function TendenciesCokies() {
 
     const animate = () => {
       x -= speed;
-
-      // cuando se fue todo el primer bloque
+      // Reinicia cuando se ha desplazado la mitad del contenido
       if (Math.abs(x) >= track.scrollWidth / 2) {
         x = 0;
       }
-
       track.style.transform = `translateX(${x}px)`;
       animationId = requestAnimationFrame(animate);
     };
 
     animationId = requestAnimationFrame(animate);
-
     return () => cancelAnimationFrame(animationId);
   }, []);
 
@@ -61,14 +55,13 @@ function TendenciesCokies() {
         className="flex w-max"
         style={{ willChange: "transform" }}
       >
-        {/* Original */}
+        {/* Pasamos los datos a la prop 'tendenciesCoffee' para reutilizar la tarjeta sin editarla */}
         <div className="flex gap-8 px-4">
-          <TendenciesCard tendenciesCoffee={tendenciesCokies} />
+          <TendenciesCard tendenciesCoffee={tendenciesCookies} />
         </div>
-
-        {/* Duplicado */}
+        {/* Duplicado para el efecto infinito */}
         <div className="flex gap-8 px-4">
-          <TendenciesCard tendenciesCoffee={tendenciesCokies} />
+          <TendenciesCard tendenciesCoffee={tendenciesCookies} />
         </div>
       </div>
     </div>

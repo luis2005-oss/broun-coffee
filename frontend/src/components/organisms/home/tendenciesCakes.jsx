@@ -3,32 +3,28 @@ import { TendenciesCard } from "../../molecules/home/homeTendeciesCard";
 
 function TendenciesCakes() {
   const trackRef = useRef(null);
-  const speed = 0.4; // velocidad (px por frame)
+  const speed = 0.4;
 
-  const tendenciesCoffee = [
+  const tendenciesCakes = [
     {
-      img: "/TEN-COFFEE1.png",
-      title: "Postre 1",
-      description:
-        "Intenso y concentrado, es la base perfecta para muchas bebidas clásicas.",
+      img: "/TR-CHOCOLATE.png",
+      title: "Tarta Chocolate",
+      description: "Esponjosa y húmeda, con cobertura de ganache artesanal.",
     },
     {
-      img: "/TEN-COFFEE2.png",
-      title: "Café Latte",
-      description:
-        "Su suave mezcla de espresso con leche lo hace cremoso y muy equilibrado.",
+      img: "/TR-FRESA.png",
+      title: "Cheesecake Fresa",
+      description: "Base crujiente y crema suave con fresas frescas de temporada.",
     },
     {
-      img: "/TEN-COFFEE3.png",
-      title: "Postre 3",
-      description:
-        "Ligero y equilibrado, ideal para quienes prefieren un sabor suave.",
+      img: "/TR-LIMON.png",
+      title: "Pie de Limón",
+      description: "El equilibrio perfecto entre lo dulce y lo cítrico.",
     },
     {
-      img: "/TEN-COFFEE4.png",
-      title: "Café Mocha",
-      description:
-        "Dulce y chocolatoso, combina espresso con cacao y un toque de leche.",
+      img: "/TR-TRESLECHES.png",
+      title: "Tres Leches",
+      description: "Tradicional, jugoso y cubierto de merengue suave.",
     },
   ];
 
@@ -39,36 +35,30 @@ function TendenciesCakes() {
 
     const animate = () => {
       x -= speed;
-
-      // cuando se fue todo el primer bloque
       if (Math.abs(x) >= track.scrollWidth / 2) {
         x = 0;
       }
-
       track.style.transform = `translateX(${x}px)`;
       animationId = requestAnimationFrame(animate);
     };
 
     animationId = requestAnimationFrame(animate);
-
     return () => cancelAnimationFrame(animationId);
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden py-4">
+    <div className="relative w-full overflow-hidden py-6">
       <div
         ref={trackRef}
         className="flex w-max"
         style={{ willChange: "transform" }}
       >
-        {/* Original */}
+        {/* Reutilizamos la misma prop para no romper el componente hijo */}
         <div className="flex gap-8 px-4">
-          <TendenciesCard tendenciesCoffee={tendenciesCoffee} />
+          <TendenciesCard tendenciesCoffee={tendenciesCakes} />
         </div>
-
-        {/* Duplicado */}
         <div className="flex gap-8 px-4">
-          <TendenciesCard tendenciesCoffee={tendenciesCoffee} />
+          <TendenciesCard tendenciesCoffee={tendenciesCakes} />
         </div>
       </div>
     </div>
